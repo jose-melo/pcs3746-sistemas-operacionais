@@ -4,7 +4,8 @@ MAINTAINER Tiago Koji Castro Shibata
 # Packages
 RUN apt-get update && apt-get install --no-install-recommends -y bc binutils-arm-linux-gnueabi \
     build-essential cpio gcc-arm-linux-gnueabi gdb-arm-none-eabi libc6-dev-armel-cross \
-    libelf-dev locales qemu-system-arm sudo && \
+    libelf-dev locales qemu-system-arm libncurses-dev flex bison openssl libssl-dev dkms libelf-dev \
+		libudev-dev libpci-dev libiberty-dev autoconf sudo && \
     rm -rf /var/lib/apt/lists/*
 
 # Environment
