@@ -11,7 +11,7 @@
 
 #define len(_arr) ((int)((&_arr)[1] - _arr))
 
-static const char * const programs[] = { "/stop_test" };
+static const char * const programs[] = { "/producer_consumer" };
 
 void panic(const char *msg)
 {
@@ -31,7 +31,7 @@ void mount_fs()
 
 int main()
 {
-	printf("Custom initramfs - Hello World syscall:\n");
+	printf("Custom initram \n");
 	hello_world();
 	mount_fs();
 
