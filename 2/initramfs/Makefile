@@ -20,4 +20,4 @@ build/initramfs_root/stop_test: stop_test.o
 		$(CC) -o $@ $^
 
 build/initramfs_root/producer_consumer: producer_consumer.o
-		$(CC) -o $@ $^
+		$(CC) -o $@ $^ -lpthread

@@ -4,6 +4,7 @@
 
 #define __NR_init_semaphore 404
 #define __NR_up_2 405
+#define __NR_down_2 406
 
 long init_semaphore(unsigned int initial_value)
 {
@@ -13,4 +14,9 @@ long init_semaphore(unsigned int initial_value)
 long up(unsigned int sem)
 {
 	return syscall(__NR_up_2, sem);
+}
+
+long down(unsigned int sem)
+{
+	return syscall(__NR_down_2, sem);
 }
