@@ -2,7 +2,7 @@
 #include <pthread.h>
 #include <unistd.h>
 #include "semaphore.h"
-#define NUM_THREADS 3
+#define NUM_THREADS 2
 #define MAX_BUFFER 2
 typedef unsigned int sem_id;
 
@@ -135,10 +135,10 @@ int main()
       perror("[USER] MAIN ~ Falha na criação de thread do consumidor");
     }
 
-    if (pthread_create(&th[2], NULL, &producer2, NULL) != 0)
-    {
-      perror("[USER] MAIN ~ Falha na criação de thread do produtor kinoshi");
-    }
+    // if (pthread_create(&th[2], NULL, &producer2, NULL) != 0)
+    // {
+    //   perror("[USER] MAIN ~ Falha na criação de thread do produtor kinoshi");
+    // }
 
     for (int i = 0; i < NUM_THREADS; i++)
     {

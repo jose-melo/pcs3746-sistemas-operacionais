@@ -11,7 +11,7 @@
 
 #define len(_arr) ((int)((&_arr)[1] - _arr))
 
-static const char * const programs[] = { "/producer_consumer" };
+static const char *const programs[] = {"/producer_consumer"};
 
 void panic(const char *msg)
 {
@@ -35,23 +35,37 @@ int main()
 	hello_world();
 	mount_fs();
 
-	printf("Forking to run %d programs\n", len(programs));
+	char c = getchar();
 
-	for (int i = 0; i < len(programs); i++) {
+	int meupid = getpid();
+	int meupid2;
+
+	printf("Forking to run %d programs pid = %d\n", len(programs), meupid);
+
+	for (int i = 0; i < len(programs); i++)
+	{
 		const char *path = programs[i];
 		pid_t pid = fork();
-		if (pid == -1) {
+		if (pid == -1)
+		{
 			panic("fork");
-		} else if (pid) {
+		}
+		else if (pid)
+		{
 			printf("Starting %s (pid = %d)\n", path, pid);
-		} else {
+		}
+		else
+		{
+			meupid2 = getpid();
+			printf('meupid %d meupid2 %d\n', meupid, meupid2);
 			execl(path, path, (char *)NULL);
 			panic("execl");
 		}
 	}
 
 	int program_count = len(programs);
-	while (program_count) {
+	while (program_count)
+	{
 		int wstatus;
 		pid_t pid = wait(&wstatus);
 		if (WIFEXITED(wstatus))
